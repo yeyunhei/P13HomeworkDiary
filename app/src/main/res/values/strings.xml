@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Homework Diary</string>
+    <string name="insertsubj">Insert new subject</string>
+    <string name="title">Name</string>
+    <string name="entertitle">Enter subject name here</string>
+    <string name="desc">Description</string>
+    <string name="enterdesc">Enter description here</string>
+    <string name="back">Back</string>
+    <string name="insertAct">Insert new activity</string>
+    <string name="duedate">Due Date</string>
+    <string name="enterdue">Enter due date here DD/MM/YYYY</string>
+
+
+</resources>
