@@ -85,30 +85,28 @@ public class DBHelper extends SQLiteOpenHelper {
         return ALSubjects;
     }
 
-   /* public int updateSong(Song data) {
+    public int updateSubject(Subject data) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TITLE, data.getTitle());
-        values.put(COLUMN_SINGERS, data.getSingers());
-        values.put(COLUMN_YEAR, data.getYear());
-        values.put(COLUMN_STARS, data.getStars());
+        values.put(COLUMN_NAME, data.getName());
+        values.put(COLUMN_DESCRIPTION, data.getDesc());
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(data.getId())};
-        int result = db.update(TABLE_SONG, values, condition, args);
+        int result = db.update(TABLE_SUBJECT, values, condition, args);
         db.close();
         return result;
     }
 
-    public int deleteSong(int id) {
+    public int deleteSubject(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};
-        int result = db.delete(TABLE_SONG, condition, args);
+        int result = db.delete(TABLE_SUBJECT, condition, args);
         db.close();
         return result;
     }
 
-    public ArrayList<Song> getAll5StarSongs() {
+   /* public ArrayList<Song> getAll5StarSongs() {
         ArrayList<Song> ALSongs = new ArrayList<Song>();
 
         String selectQuery = "SELECT " + COLUMN_ID + ","

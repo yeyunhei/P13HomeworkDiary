@@ -89,6 +89,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        lvSubject.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Subject subjectdata = alSubj.get(position);
+                Intent o = new Intent(MainActivity.this, EditActivity.class);
+                o.putExtra("subjectdata", subjectdata);
+                startActivity(o);
+                return false;
+            }
+        });
+
     }
 
     @Override

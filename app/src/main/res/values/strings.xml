@@ -9,6 +9,7 @@
     <string name="insertAct">Insert new activity</string>
     <string name="duedate">Due Date</string>
     <string name="enterdue">Enter due date here DD/MM/YYYY</string>
-
-
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 </resources>

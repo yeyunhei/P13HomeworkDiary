@@ -113,4 +113,25 @@ public class DBHelperActivity extends SQLiteOpenHelper {
         return ALActivities;
     }
 
+    public int updateActivity(Activity data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DESCRIPTION, data.getDescription());
+        values.put(COLUMN_DUE_DATE, data.getDueDate());
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(data.getId())};
+        int result = db.update(TABLE_ACTIVITY, values, condition, args);
+        db.close();
+        return result;
+    }
+
+    public int deleteActivity(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(id)};
+        int result = db.delete(TABLE_ACTIVITY, condition, args);
+        db.close();
+        return result;
+    }
+
 }

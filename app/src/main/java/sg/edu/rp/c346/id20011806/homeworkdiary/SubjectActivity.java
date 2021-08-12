@@ -7,14 +7,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -97,6 +100,36 @@ public class SubjectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        lvActivities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Activity activitydata = alAct.get(position);
+                //Intent p = new Intent(SubjectActivity.this, EditSecondActivity.class);
+                //p.putExtra("activitydata", al);
+               // startActivity(p);
+
+                DBHelperActivity dbh = new DBHelperActivity(SubjectActivity.this);
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(SubjectActivity.this);
+
+                myBuilder.setTitle("Danger");
+                myBuilder.setMessage("Are you sure you want to delete the activity: " + activitydata.getDescription() + "?");
+                myBuilder.setCancelable(false);
+                myBuilder.setNegativeButton("DELETE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dbh.deleteActivity(activitydata.getId());
+                        Toast.makeText(SubjectActivity.this, "Delete successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                myBuilder.setPositiveButton("Cancel", null);
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
             }
         });
 
